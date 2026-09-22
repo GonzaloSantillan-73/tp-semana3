@@ -21,7 +21,15 @@ export const crearAutor = (req, res, next) => {
         error.status = 400;
         return next(error);
     }
-    const nuevoId = autores.length > 0 ? Math.max(...autores.map(a => a.id)) + 1 : 1;
+    let mayorId = 0;
+
+    autores.forEach(autor => {
+        if (autor.id > mayorId) {
+            mayorId = autor.id;
+        }
+    });
+
+    const nuevoId = mayorId + 1;
     const nuevoAutor = { id: nuevoId, nombre, nacionalidad: nacionalidad || 'Desconocida' };
     autores.push(nuevoAutor);
     res.status(201).json(nuevoAutor);
