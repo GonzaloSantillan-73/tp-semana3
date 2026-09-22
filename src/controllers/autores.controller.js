@@ -51,7 +51,7 @@ export const actualizarAutor = (req, res, next) => {
     }
 
     autor.nombre = nombre;
-    autor.nacionalidad = nacionalidad ?? autor.nacionalidad;
+    autor.nacionalidad = nacionalidad || autor.nacionalidad;
     res.json(autor);
 };
 
