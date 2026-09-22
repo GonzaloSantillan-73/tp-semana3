@@ -54,12 +54,12 @@ app.get('/info', (req, res) => {
         autor: 'Tu Nombre',
         estado: 'En desarrollo'
     });
-} );
+});
 
 app.post('/libros', (req, res) => {
     const { titulo, autor, anio } = req.body;
 
-    if (!titulo || !autor ) {
+    if (!titulo || !autor) {
         return res.status(400).json({ error: 'Faltan datos obligatorios: titulo y autor son requeridos' });
     }
 
@@ -69,7 +69,7 @@ app.post('/libros', (req, res) => {
 
     libros.push(nuevoLibro);
     res.status(201).json(nuevoLibro);
-    
+
 });
 
 app.put('/libros/:id', (req, res) => {
